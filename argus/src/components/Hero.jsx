@@ -1,3 +1,5 @@
+import { BackgroundPaths } from './BackgroundPaths'
+
 export default function Hero() {
   return (
     <section
@@ -11,7 +13,10 @@ export default function Hero() {
         paddingTop: 72,
       }}
     >
-      {/* Background blobs */}
+      {/* Layer 1 — animated flowing paths */}
+      <BackgroundPaths />
+
+      {/* Layer 2 — ambient glow blobs */}
       <div className="glow-blob glow-blob-blue animate-pulse-glow"
         style={{ width: 700, height: 700, top: '0%', left: '58%', transform: 'translate(-50%, -20%)' }} />
       <div className="glow-blob glow-blob-cyan animate-pulse-glow-2"

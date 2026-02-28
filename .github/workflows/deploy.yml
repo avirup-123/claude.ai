@@ -18,14 +18,27 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install dependencies (akis-studio)
         run: cd akis-studio && npm install
 
-      - name: Build
+      - name: Build (akis-studio)
         run: cd akis-studio && npm run build
+
+      - name: Install dependencies (argus)
+        run: cd argus && npm install
+
+      - name: Build (argus)
+        run: cd argus && npm run build
+
+      - name: Merge build outputs
+        run: |
+          mkdir -p dist
+          cp -r akis-studio/dist/. dist/
+          mkdir -p dist/argus
+          cp -r argus/dist/. dist/argus/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./akis-studio/dist
+          publish_dir: ./dist

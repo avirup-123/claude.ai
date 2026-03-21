@@ -107,10 +107,16 @@ async function main() {
     const label = `[${i + 1}/${profiles.length}] ${p.display_name} (${p.role_title})`;
 
     try {
-      // 1. Generate embedding
+      // 1. Generate embedding (best-effort — skip if network unavailable)
       process.stdout.write(`${label} — generating embedding...`);
-      const embeddingText = profileToEmbeddingText(p);
-      const profile_embedding = await generateEmbedding(embeddingText);
+      let profile_embedding: number[] | null = null;
+      try {
+        const embeddingText = profileToEmbeddingText(p);
+        profile_embedding = await generateEmbedding(embeddingText);
+        process.stdout.write(` done (${profile_embedding.length}-dim)`);
+      } catch {
+        process.stdout.write(` skipped (no network)`);
+      }
 
       // 2. Build DB row — map role_title → role, drop role_cluster
       const now = new Date().toISOString();
@@ -137,7 +143,7 @@ async function main() {
         console.error(`  Supabase error: ${error.message}`);
         failed++;
       } else {
-        process.stdout.write(` done (${profile_embedding.length}-dim)\n`);
+        process.stdout.write(` inserted\n`);
         inserted++;
       }
     } catch (err) {

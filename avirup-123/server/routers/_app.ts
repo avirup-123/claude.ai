@@ -1,5 +1,6 @@
 import { router } from "../trpc";
 import { helloRouter } from "./hello";
+import { profileRouter } from "./profile";
 
 /**
  * Root application router.
@@ -7,6 +8,7 @@ import { helloRouter } from "./hello";
  */
 export const appRouter = router({
   hello: helloRouter,
+  profile: profileRouter,
 });
 
 export type AppRouter = typeof appRouter;

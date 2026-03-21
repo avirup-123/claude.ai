@@ -32,6 +32,7 @@ const t = initTRPC.context<Context>().create({
 /** Reusable router and procedure builders */
 export const router = t.router;
 export const publicProcedure = t.procedure;
+export const createCallerFactory = t.createCallerFactory;
 
 /** Protected procedure — throws UNAUTHORIZED if no session */
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {

@@ -69,5 +69,5 @@ export interface MemberRow extends ProfileFormValues {
   id: string;
   created_at: string;
   updated_at: string;
-  embedding?: number[] | null;
+  profile_embedding?: number[] | null;
 }

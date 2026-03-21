@@ -37,16 +37,15 @@ export async function generateEmbedding(text: string): Promise<number[]> {
 
 /**
  * Builds a plain-text representation of a member profile suitable for embedding.
+ * Concatenates: role_title + skills + bio + looking_for
  */
-export function profileToEmbeddingText(profile: Omit<MemberRow, "id" | "created_at" | "updated_at" | "embedding">): string {
-  const parts: string[] = [
-    profile.display_name,
+export function profileToEmbeddingText(profile: Omit<MemberRow, "id" | "created_at" | "updated_at" | "profile_embedding">): string {
+  return [
     profile.role,
     profile.skills.join(", "),
     profile.bio,
-    profile.stage,
     profile.looking_for.join(", "),
-    [profile.location_city, profile.location_country].filter(Boolean).join(", "),
-  ];
-  return parts.filter(Boolean).join(". ");
+  ]
+    .filter(Boolean)
+    .join(" ");
 }

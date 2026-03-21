@@ -52,10 +52,10 @@ export const profileRouter = router({
       // We don't await this on the critical path — if it fails, the profile
       // is still saved and can be re-embedded later.
       generateEmbedding(profileToEmbeddingText(profileData))
-        .then((embedding) =>
+        .then((profile_embedding) =>
           supabase
             .from("members")
-            .update({ embedding })
+            .update({ profile_embedding })
             .eq("id", memberId!)
         )
         .catch((err) =>

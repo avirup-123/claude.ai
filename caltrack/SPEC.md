@@ -11,7 +11,7 @@
 - Make it effortless to log a meal in under 10 seconds
 - Give a clear, at-a-glance view of today's calorie status
 - Show a 7-day history so users can understand their weekly patterns
-- Zero friction: no sign-up, no server, works offline after first load
+- Zero friction: no sign-up, no server, no installation required
 
 ---
 
@@ -19,9 +19,10 @@
 
 | Layer | Choice | Notes |
 |---|---|---|
-| Framework | Next.js (App Router) | Static export, no server components needed |
-| Styling | Tailwind CSS | Utility-first, no custom CSS files |
-| Charts | Recharts | Bar chart for weekly history |
+| Framework | Next.js 16 (App Router) | Turbopack is the default dev bundler |
+| Language | TypeScript | Strict mode via tsconfig |
+| Styling | Tailwind CSS v4 | Utility-first; configured via `@tailwindcss/postcss` |
+| Charts | Recharts v3 | Bar chart for weekly history |
 | Food data | Open Food Facts API | Free, no API key required |
 | Persistence | localStorage | No backend; data is browser-local |
 
@@ -58,7 +59,7 @@
 #### Daily Summary
 
 - Progress bar: calories consumed vs. 2,000 kcal target
-  - Green when under target, red when over
+  - Blue when under target, red when over
 - Text display:
   - "X kcal consumed of 2,000 kcal"
   - "Y kcal remaining" or "Z kcal over target"

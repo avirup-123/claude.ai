@@ -6,16 +6,17 @@ A simple web app to log daily meals, monitor calorie intake, and visualize your 
 
 ## Tech Stack
 
-- **Framework**: Next.js (App Router)
-- **Styling**: Tailwind CSS
-- **Charts**: Recharts
+- **Framework**: Next.js 16 (App Router) — Turbopack is the default dev bundler
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4 (configured via `@tailwindcss/postcss`)
+- **Charts**: Recharts v3
 - **Food data**: Open Food Facts API (free, no API key)
 - **Storage**: localStorage (no backend, no login)
 
 ## Key Features
 
 1. **Meal logging** — Type a food name to get calorie suggestions from Open Food Facts, then add it to today's flat list. Entries can be edited or deleted.
-2. **Daily dashboard** — Shows calories consumed vs. a fixed 2,000 kcal daily target with a progress bar. Displays remaining or over-by amount.
+2. **Daily dashboard** — Shows calories consumed vs. a fixed 2,000 kcal daily target with a progress bar (blue = under, red = over). Displays remaining or over-by amount.
 3. **7-day chart** — Bar chart showing daily calories consumed vs. target. Blue = under target (deficit), red = over target (surplus). Includes a daily breakdown table with a 7-day net deficit/surplus total.
 
 ## Design Preferences

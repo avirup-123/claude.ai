@@ -1,0 +1,28 @@
+-- CreateTable
+CREATE TABLE "UserProfile" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT DEFAULT 1,
+    "age" INTEGER NOT NULL,
+    "sex" TEXT NOT NULL,
+    "heightCm" REAL NOT NULL,
+    "weightKg" REAL NOT NULL,
+    "activityLevel" TEXT NOT NULL,
+    "tdee" REAL NOT NULL,
+    "goalCalories" REAL NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "MealEntry" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "calories" INTEGER NOT NULL,
+    "loggedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateTable
+CREATE TABLE "WeightEntry" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "weightKg" REAL NOT NULL,
+    "loggedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
